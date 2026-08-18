@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Component Store — 147 Premium Single-File HTML Components</title>
+<meta name="description" content="147 hand-crafted, production-ready HTML/CSS components. Single-file, no framework, no build step. Buy once, get every future update free.">
+<style>
+  :root {
+    --bg: #0b0c0e;
+    --bg2: #121317;
+    --card: #16181d;
+    --line: #23262e;
+    --text: #e8e9ec;
+    --muted: #9aa0ac;
+    --accent: #c9a84c;
+    --accent2: #e8d59a;
+    --radius: 14px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif; line-height:1.6; }
+  .wrap { max-width:1180px; margin:0 auto; padding:0 24px; }
+
+  /* Hero */
+  header { border-bottom:1px solid var(--line); background:radial-gradient(1200px 500px at 70% -10%, #1a1c22 0%, transparent 60%); }
+  .nav { display:flex; justify-content:space-between; align-items:center; padding:22px 0; }
+  .brand { font-weight:700; letter-spacing:-0.02em; font-size:17px; }
+  .brand span { color:var(--accent); }
+  .nav a.gum { color:var(--muted); text-decoration:none; font-size:14px; border:1px solid var(--line); padding:8px 16px; border-radius:99px; transition:.2s; }
+  .nav a.gum:hover { color:var(--text); border-color:var(--accent); }
+  .hero { padding:84px 0 64px; text-align:center; }
+  .hero .tag { display:inline-block; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); border:1px solid rgba(201,168,76,.35); padding:6px 14px; border-radius:99px; margin-bottom:24px; }
+  .hero h1 { font-size:clamp(34px,5.5vw,60px); font-weight:800; letter-spacing:-0.03em; line-height:1.08; max-width:820px; margin:0 auto 20px; }
+  .hero h1 em { color:var(--accent2); font-style:normal; }
+  .hero p { color:var(--muted); font-size:clamp(16px,2vw,19px); max-width:680px; margin:0 auto 36px; }
+  .hero-cta { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn { display:inline-block; background:var(--accent); color:#14110a; font-weight:700; font-size:15px; padding:14px 28px; border-radius:10px; text-decoration:none; transition:.2s; }
+  .btn:hover { background:var(--accent2); transform:translateY(-1px); }
+  .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
+  .btn.ghost:hover { border-color:var(--accent); color:var(--accent2); transform:none; }
+  .stats { display:flex; justify-content:center; gap:48px; margin-top:56px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat b { display:block; font-size:30px; font-weight:800; letter-spacing:-0.02em; }
+  .stat span { color:var(--muted); font-size:13px; }
+
+  /* Sections */
+  section { padding:72px 0; }
+  .sec-head { text-align:center; margin-bottom:48px; }
+  .sec-head h2 { font-size:clamp(26px,3.5vw,38px); letter-spacing:-0.02em; margin-bottom:10px; }
+  .sec-head p { color:var(--muted); max-width:560px; margin:0 auto; }
+
+  /* Pack grid */
+  .packs { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:22px; }
+  .pack { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; transition:.25s; display:flex; flex-direction:column; }
+  .pack:hover { transform:translateY(-3px); border-color:#333842; box-shadow:0 16px 40px rgba(0,0,0,.45); }
+  .pack-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); }
+  .pack-grid img { width:100%; aspect-ratio:16/10; object-fit:cover; display:block; }
+  .pack-body { padding:20px 22px 22px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .pack-head { display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
+  .pack-head h3 { font-size:18px; letter-spacing:-0.01em; }
+  .count { color:var(--muted); font-size:12.5px; white-space:nowrap; }
+  .pack p { color:var(--muted); font-size:14px; }
+  .pack-foot { display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:8px; }
+  .price { font-size:22px; font-weight:800; letter-spacing:-0.02em; }
+  .price small { color:var(--muted); font-weight:400; font-size:13px; }
+  .pack .btn { padding:9px 18px; font-size:13.5px; border-radius:8px; }
+
+  /* Full collection CTA */
+  .collection { background:linear-gradient(180deg,var(--bg2),var(--bg)); border:1px solid var(--line); border-radius:20px; padding:56px 40px; text-align:center; position:relative; overflow:hidden; }
+  .collection::before { content:''; position:absolute; inset:0; background:radial-gradient(600px 300px at 50% -20%, rgba(201,168,76,.14), transparent 70%); }
+  .collection > * { position:relative; }
+  .collection h2 { font-size:clamp(28px,4vw,44px); letter-spacing:-0.03em; margin-bottom:14px; }
+  .collection p { color:var(--muted); max-width:600px; margin:0 auto 28px; }
+  .collection .price-big { font-size:44px; font-weight:800; letter-spacing:-0.03em; color:var(--accent2); }
+  .collection .price-big small { font-size:16px; color:var(--muted); font-weight:400; }
+  .save { display:inline-block; margin-top:10px; font-size:13px; color:#7fd0a0; background:rgba(63,185,110,.12); border:1px solid rgba(63,185,110,.3); padding:4px 12px; border-radius:99px; }
+
+  /* Gallery */
+  .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:14px; }
+  .item { background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; transition:.2s; }
+  .item:hover { border-color:#333842; transform:translateY(-2px); }
+  .item img { width:100%; aspect-ratio:16/10; object-fit:cover; display:block; }
+  .item figcaption { font-size:12px; color:var(--muted); padding:8px 12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+  /* Gumroad note */
+  .note { background:rgba(201,168,76,.07); border:1px solid rgba(201,168,76,.25); border-radius:12px; padding:18px 24px; text-align:center; color:#d8c9a0; font-size:15px; margin-top:40px; }
+  .note b { color:var(--accent2); }
+
+  footer { border-top:1px solid var(--line); padding:36px 0 48px; text-align:center; color:var(--muted); font-size:13.5px; }
+  footer a { color:var(--muted); }
+  @media (max-width:720px) {
+    .packs { grid-template-columns:1fr; }
+    .hero { padding:56px 0 40px; }
+    section { padding:52px 0; }
+    .stats { gap:28px; }
+    .collection { padding:40px 24px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">UI<span>Kit</span></div>
+      <a class="gum" href="#gumroad">Buy on Gumroad →</a>
+    </nav>
+    <div class="hero">
+      <span class="tag">147 components · 12 category packs</span>
+      <h1>Premium HTML UI Components.<br><em>One file. No framework. Zero build.</em></h1>
+      <p>Hand-crafted, production-ready HTML/CSS components. Drop any file into your project — it just works. React, Vue, WordPress, static sites: every stack.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#packs">Browse packs</a>
+        <a class="btn ghost" href="#collection">Get everything — $49</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>147</b><span>components</span></div>
+        <div class="stat"><b>12</b><span>category packs</span></div>
+        <div class="stat"><b>$4</b><span>per single file</span></div>
+        <div class="stat"><b>$49</b><span>full collection</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="packs">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Category packs</h2>
+      <p>Each pack is a themed set of single-file components. Prices from $7 to $19 — less than $1 per component.</p>
+    </div>
+    <div class="packs">
+      
+    <article class="pack" id="pack-ai-model">
+      <div class="pack-grid"><img src="assets/claude-model-card.jpg" alt="" loading="lazy"><img src="assets/perplexity-answer-card.jpg" alt="" loading="lazy"><img src="assets/huggingface-model-card.jpg" alt="" loading="lazy"><img src="assets/openai-editorial-card.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>AI &amp; Model</h3>
+          <span class="count">23 components</span>
+        </div>
+        <p>Model cards, prompt heroes, agent panels, inference stats — AI product UI.</p>
+        <div class="pack-foot">
+          <span class="price">$15</span>
+          <a class="btn" href="#gumroad" data-pack="AI &amp; Model">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-saas-dashboard">
+      <div class="pack-grid"><img src="assets/posthog-insight-card.jpg" alt="" loading="lazy"><img src="assets/sentry-incident-monitor-card.jpg" alt="" loading="lazy"><img src="assets/sleek-analytics-overview.jpg" alt="" loading="lazy"><img src="assets/modern-saas-pricing-card.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>SaaS &amp; Dashboard</h3>
+          <span class="count">37 components</span>
+        </div>
+        <p>Status monitors, telemetry panels, pricing cards, API dashboards.</p>
+        <div class="pack-foot">
+          <span class="price">$19</span>
+          <a class="btn" href="#gumroad" data-pack="SaaS &amp; Dashboard">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-e-commerce-retail">
+      <div class="pack-grid"><img src="assets/nike-product-card.jpg" alt="" loading="lazy"><img src="assets/shopify-storefront-product-card.jpg" alt="" loading="lazy"><img src="assets/apple-product-hero.jpg" alt="" loading="lazy"><img src="assets/nvidia-gpu-product-card.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>E-commerce &amp; Retail</h3>
+          <span class="count">9 components</span>
+        </div>
+        <p>Product heroes, storefront cards, offer sections for online stores.</p>
+        <div class="pack-foot">
+          <span class="price">$15</span>
+          <a class="btn" href="#gumroad" data-pack="E-commerce &amp; Retail">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-food-beverage">
+      <div class="pack-grid"><img src="assets/starbucks-rewards-status-card.jpg" alt="" loading="lazy"><img src="assets/arc-sidebar-tabs.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>Food &amp; Beverage</h3>
+          <span class="count">2 components</span>
+        </div>
+        <p>Restaurant &amp; rewards UI — menus, loyalty status cards.</p>
+        <div class="pack-foot">
+          <span class="price">$7</span>
+          <a class="btn" href="#gumroad" data-pack="Food &amp; Beverage">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-automotive-brand">
+      <div class="pack-grid"><img src="assets/bmw-m-spec-grid.jpg" alt="" loading="lazy"><img src="assets/ferrari-subscribe-section.jpg" alt="" loading="lazy"><img src="assets/tesla-model-showcase-hero.jpg" alt="" loading="lazy"><img src="assets/kraken-portfolio-card.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>Automotive &amp; Brand</h3>
+          <span class="count">22 components</span>
+        </div>
+        <p>Brand showcases, spec grids, portfolio &amp; product hero sections.</p>
+        <div class="pack-foot">
+          <span class="price">$12</span>
+          <a class="btn" href="#gumroad" data-pack="Automotive &amp; Brand">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-genel-utility">
+      <div class="pack-grid"><img src="assets/canva-template-picker.jpg" alt="" loading="lazy"><img src="assets/github-pr-list-panel.jpg" alt="" loading="lazy"><img src="assets/linear-issue-tracker.jpg" alt="" loading="lazy"><img src="assets/duolingo-lesson-path.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>General &amp; Utility</h3>
+          <span class="count">6 components</span>
+        </div>
+        <p>Template pickers, PR lists, issue trackers, service panels.</p>
+        <div class="pack-foot">
+          <span class="price">$9</span>
+          <a class="btn" href="#gumroad" data-pack="Genel &amp; Utility">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-fintech">
+      <div class="pack-grid"><img src="assets/binance-portfolio-card.jpg" alt="" loading="lazy"><img src="assets/stripe-checkout-summary.jpg" alt="" loading="lazy"><img src="assets/wise-transfer-quote-card.jpg" alt="" loading="lazy"><img src="assets/revolut-travel-spend-card.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>Fintech</h3>
+          <span class="count">6 components</span>
+        </div>
+        <p>Crypto portfolios, checkout summaries, transfer quotes, watchlists.</p>
+        <div class="pack-foot">
+          <span class="price">$12</span>
+          <a class="btn" href="#gumroad" data-pack="Fintech">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-newsletter-editorial">
+      <div class="pack-grid"><img src="assets/brutalism-newsletter-cta.jpg" alt="" loading="lazy"><img src="assets/editorial-story-feature-card.jpg" alt="" loading="lazy"><img src="assets/storytelling-chapter-card.jpg" alt="" loading="lazy"><img src="assets/colorful-newsletter-card.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>Newsletter &amp; Editorial</h3>
+          <span class="count">5 components</span>
+        </div>
+        <p>Newsletter CTAs, editorial features, storytelling chapters.</p>
+        <div class="pack-foot">
+          <span class="price">$9</span>
+          <a class="btn" href="#gumroad" data-pack="Newsletter &amp; Editorial">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-media-entertainment">
+      <div class="pack-grid"><img src="assets/spotify-now-playing-card.jpg" alt="" loading="lazy"><img src="assets/playstation-game-launch-card.jpg" alt="" loading="lazy"><img src="assets/loom-video-card.jpg" alt="" loading="lazy"><img src="assets/dramatic-cinema-hero.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>Media &amp; Entertainment</h3>
+          <span class="count">8 components</span>
+        </div>
+        <p>Cinema heroes, game launches, music &amp; video player cards.</p>
+        <div class="pack-foot">
+          <span class="price">$12</span>
+          <a class="btn" href="#gumroad" data-pack="Media &amp; Entertainment">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-travel-hospitality">
+      <div class="pack-grid"><img src="assets/elegant-travel-advisory-card.jpg" alt="" loading="lazy"><img src="assets/premium-travel-offer-card.jpg" alt="" loading="lazy"><img src="assets/minimal-itinerary-card.jpg" alt="" loading="lazy"><img src="assets/cal-booking-card.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>Travel &amp; Hospitality</h3>
+          <span class="count">18 components</span>
+        </div>
+        <p>Booking, itineraries, advisory forms, destination showcases.</p>
+        <div class="pack-foot">
+          <span class="price">$15</span>
+          <a class="btn" href="#gumroad" data-pack="Travel &amp; Hospitality">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-social-community">
+      <div class="pack-grid"><img src="assets/discord-chat-thread.jpg" alt="" loading="lazy"><img src="assets/slack-thread-message-card.jpg" alt="" loading="lazy"><img src="assets/wechat-chat-thread.jpg" alt="" loading="lazy"><img src="assets/pinterest-pin-board.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>Social &amp; Community</h3>
+          <span class="count">5 components</span>
+        </div>
+        <p>Chat threads, profile cards, pin boards for community apps.</p>
+        <div class="pack-foot">
+          <span class="price">$9</span>
+          <a class="btn" href="#gumroad" data-pack="Social &amp; Community">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    <article class="pack" id="pack-creative-experimental">
+      <div class="pack-grid"><img src="assets/glassmorphism-metric-panel.jpg" alt="" loading="lazy"><img src="assets/gradient-spotlight-cta.jpg" alt="" loading="lazy"><img src="assets/dithered-retro-panel.jpg" alt="" loading="lazy"><img src="assets/vibrant-launch-card.jpg" alt="" loading="lazy"></div>
+      <div class="pack-body">
+        <div class="pack-head">
+          <h3>Creative &amp; Experimental</h3>
+          <span class="count">6 components</span>
+        </div>
+        <p>Experimental panels, glassmorphism, gradient &amp; terminal styles.</p>
+        <div class="pack-foot">
+          <span class="price">$12</span>
+          <a class="btn" href="#gumroad" data-pack="Creative &amp; Experimental">Get the pack</a>
+        </div>
+      </div>
+    </article>
+    </div>
+  </div>
+</section>
+
+<section id="collection">
+  <div class="wrap">
+    <div class="collection">
+      <h2>The full collection</h2>
+      <p>Every component, every pack, every future update. Buy once — receive new components free as the library grows every week.</p>
+      <div class="price-big">$49 <small>· 147 components · 147 files</small></div>
+      <div><span class="save">66% off vs buying packs separately</span></div>
+      <br>
+      <a class="btn" href="#gumroad">Get the full collection</a>
+    </div>
+    <div class="note" id="gumroad">
+      📦 <b>Stock updates continuously.</b> New components are added every week — buyers receive all future updates <b>free</b>.<br>
+      Commercial license included · unlimited projects · no attribution required.
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Every component</h2>
+      <p>Real previews of all 147 files — single files from $4 each on Gumroad.</p>
+    </div>
+    <div class="gallery">
+      <figure class="item">
+  <img src="assets/airbnb-listing-card.jpg" alt="Airbnb Listing Card" loading="lazy">
+  <figcaption>Airbnb Listing Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/airtable-record-card.jpg" alt="Airtable Record Card" loading="lazy">
+  <figcaption>Airtable Record Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/bold-campaign-card.jpg" alt="Bold Campaign Card" loading="lazy">
+  <figcaption>Bold Campaign Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/claude-model-card.jpg" alt="Claude Model Card" loading="lazy">
+  <figcaption>Claude Model Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/creative-campaign-card.jpg" alt="Creative Campaign Card" loading="lazy">
+  <figcaption>Creative Campaign Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/cursor-ai-timeline-card.jpg" alt="Cursor Ai Timeline Card" loading="lazy">
+  <figcaption>Cursor Ai Timeline Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/elevenlabs-voice-synthesis-card.jpg" alt="Elevenlabs Voice Synthesis Card" loading="lazy">
+  <figcaption>Elevenlabs Voice Synthesis Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/expressive-campaign-card.jpg" alt="Expressive Campaign Card" loading="lazy">
+  <figcaption>Expressive Campaign Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/huggingface-model-card.jpg" alt="Huggingface Model Card" loading="lazy">
+  <figcaption>Huggingface Model Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/intercom-ai-support-card.jpg" alt="Intercom Ai Support Card" loading="lazy">
+  <figcaption>Intercom Ai Support Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/lamborghini-model-showcase.jpg" alt="Lamborghini Model Showcase" loading="lazy">
+  <figcaption>Lamborghini Model Showcase</figcaption>
+</figure><figure class="item">
+  <img src="assets/lovable-prompt-hero.jpg" alt="Lovable Prompt Hero" loading="lazy">
+  <figcaption>Lovable Prompt Hero</figcaption>
+</figure><figure class="item">
+  <img src="assets/mastercard-service-portrait.jpg" alt="Mastercard Service Portrait" loading="lazy">
+  <figcaption>Mastercard Service Portrait</figcaption>
+</figure><figure class="item">
+  <img src="assets/minimax-ai-model-card.jpg" alt="Minimax Ai Model Card" loading="lazy">
+  <figcaption>Minimax Ai Model Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/mistral-golden-model-card.jpg" alt="Mistral Golden Model Card" loading="lazy">
+  <figcaption>Mistral Golden Model Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/openai-editorial-card.jpg" alt="Openai Editorial Card" loading="lazy">
+  <figcaption>Openai Editorial Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/opencode-agent-session-panel.jpg" alt="Opencode Agent Session Panel" loading="lazy">
+  <figcaption>Opencode Agent Session Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/perplexity-answer-card.jpg" alt="Perplexity Answer Card" loading="lazy">
+  <figcaption>Perplexity Answer Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/replicate-model-card.jpg" alt="Replicate Model Card" loading="lazy">
+  <figcaption>Replicate Model Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/runwayml-cinematic-hero.jpg" alt="Runwayml Cinematic Hero" loading="lazy">
+  <figcaption>Runwayml Cinematic Hero</figcaption>
+</figure><figure class="item">
+  <img src="assets/together-ai-inference-stats.jpg" alt="Together Ai Inference Stats" loading="lazy">
+  <figcaption>Together Ai Inference Stats</figcaption>
+</figure><figure class="item">
+  <img src="assets/voltagent-agent-orchestrator-panel.jpg" alt="Voltagent Agent Orchestrator Panel" loading="lazy">
+  <figcaption>Voltagent Agent Orchestrator Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/xai-grok-inference-card.jpg" alt="Xai Grok Inference Card" loading="lazy">
+  <figcaption>Xai Grok Inference Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/ant-risk-monitor.jpg" alt="Ant Risk Monitor" loading="lazy">
+  <figcaption>Ant Risk Monitor</figcaption>
+</figure><figure class="item">
+  <img src="assets/application-api-config-card.jpg" alt="Application Api Config Card" loading="lazy">
+  <figcaption>Application Api Config Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/bento-analytics-card.jpg" alt="Bento Analytics Card" loading="lazy">
+  <figcaption>Bento Analytics Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/cisco-telemetry-card.jpg" alt="Cisco Telemetry Card" loading="lazy">
+  <figcaption>Cisco Telemetry Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/clean-pricing-card.jpg" alt="Clean Pricing Card" loading="lazy">
+  <figcaption>Clean Pricing Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/clickhouse-query-monitor.jpg" alt="Clickhouse Query Monitor" loading="lazy">
+  <figcaption>Clickhouse Query Monitor</figcaption>
+</figure><figure class="item">
+  <img src="assets/cohere-api-status-card.jpg" alt="Cohere Api Status Card" loading="lazy">
+  <figcaption>Cohere Api Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/composio-connector-card.jpg" alt="Composio Connector Card" loading="lazy">
+  <figcaption>Composio Connector Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/contemporary-saas-metrics-card.jpg" alt="Contemporary Saas Metrics Card" loading="lazy">
+  <figcaption>Contemporary Saas Metrics Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/dashboard-sla-monitor-card.jpg" alt="Dashboard Sla Monitor Card" loading="lazy">
+  <figcaption>Dashboard Sla Monitor Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/default-api-key-settings.jpg" alt="Default Api Key Settings" loading="lazy">
+  <figcaption>Default Api Key Settings</figcaption>
+</figure><figure class="item">
+  <img src="assets/enterprise-deployment-panel.jpg" alt="Enterprise Deployment Panel" loading="lazy">
+  <figcaption>Enterprise Deployment Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/expo-sdk-start-card.jpg" alt="Expo Sdk Start Card" loading="lazy">
+  <figcaption>Expo Sdk Start Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/flat-trip-status-card.jpg" alt="Flat Trip Status Card" loading="lazy">
+  <figcaption>Flat Trip Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/futuristic-system-status-hero.jpg" alt="Futuristic System Status Hero" loading="lazy">
+  <figcaption>Futuristic System Status Hero</figcaption>
+</figure><figure class="item">
+  <img src="assets/hashicorp-run-status-card.jpg" alt="Hashicorp Run Status Card" loading="lazy">
+  <figcaption>Hashicorp Run Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/hud-telemetry-panel.jpg" alt="Hud Telemetry Panel" loading="lazy">
+  <figcaption>Hud Telemetry Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/ibm-service-status-card.jpg" alt="Ibm Service Status Card" loading="lazy">
+  <figcaption>Ibm Service Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/mintlify-api-endpoint-card.jpg" alt="Mintlify Api Endpoint Card" loading="lazy">
+  <figcaption>Mintlify Api Endpoint Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/mission-control-telemetry-panel.jpg" alt="Mission Control Telemetry Panel" loading="lazy">
+  <figcaption>Mission Control Telemetry Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/modern-saas-pricing-card.jpg" alt="Modern Saas Pricing Card" loading="lazy">
+  <figcaption>Modern Saas Pricing Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/mongodb-cluster-status-card.jpg" alt="Mongodb Cluster Status Card" loading="lazy">
+  <figcaption>Mongodb Cluster Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/mono-deploy-status-card.jpg" alt="Mono Deploy Status Card" loading="lazy">
+  <figcaption>Mono Deploy Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/posthog-insight-card.jpg" alt="Posthog Insight Card" loading="lazy">
+  <figcaption>Posthog Insight Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/resend-delivery-status-card.jpg" alt="Resend Delivery Status Card" loading="lazy">
+  <figcaption>Resend Delivery Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/sanity-studio-document-card.jpg" alt="Sanity Studio Document Card" loading="lazy">
+  <figcaption>Sanity Studio Document Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/sentry-incident-monitor-card.jpg" alt="Sentry Incident Monitor Card" loading="lazy">
+  <figcaption>Sentry Incident Monitor Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/shadcn-travel-quote-card.jpg" alt="Shadcn Travel Quote Card" loading="lazy">
+  <figcaption>Shadcn Travel Quote Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/sleek-analytics-overview.jpg" alt="Sleek Analytics Overview" loading="lazy">
+  <figcaption>Sleek Analytics Overview</figcaption>
+</figure><figure class="item">
+  <img src="assets/supabase-table-status-card.jpg" alt="Supabase Table Status Card" loading="lazy">
+  <figcaption>Supabase Table Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/superhuman-inbox-card.jpg" alt="Superhuman Inbox Card" loading="lazy">
+  <figcaption>Superhuman Inbox Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/vercel-deploy-pipeline-card.jpg" alt="Vercel Deploy Pipeline Card" loading="lazy">
+  <figcaption>Vercel Deploy Pipeline Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/vodafone-connect-hero.jpg" alt="Vodafone Connect Hero" loading="lazy">
+  <figcaption>Vodafone Connect Hero</figcaption>
+</figure><figure class="item">
+  <img src="assets/warp-terminal-session-card.jpg" alt="Warp Terminal Session Card" loading="lazy">
+  <figcaption>Warp Terminal Session Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/webex-live-meeting-card.jpg" alt="Webex Live Meeting Card" loading="lazy">
+  <figcaption>Webex Live Meeting Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/webflow-feature-card.jpg" alt="Webflow Feature Card" loading="lazy">
+  <figcaption>Webflow Feature Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/zapier-workflow-integration-card.jpg" alt="Zapier Workflow Integration Card" loading="lazy">
+  <figcaption>Zapier Workflow Integration Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/apple-product-hero.jpg" alt="Apple Product Hero" loading="lazy">
+  <figcaption>Apple Product Hero</figcaption>
+</figure><figure class="item">
+  <img src="assets/luxury-journey-offer-card.jpg" alt="Luxury Journey Offer Card" loading="lazy">
+  <figcaption>Luxury Journey Offer Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/meta-store-product-showcase.jpg" alt="Meta Store Product Showcase" loading="lazy">
+  <figcaption>Meta Store Product Showcase</figcaption>
+</figure><figure class="item">
+  <img src="assets/nike-product-card.jpg" alt="Nike Product Card" loading="lazy">
+  <figcaption>Nike Product Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/nvidia-gpu-product-card.jpg" alt="Nvidia Gpu Product Card" loading="lazy">
+  <figcaption>Nvidia Gpu Product Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/refined-suite-offer-card.jpg" alt="Refined Suite Offer Card" loading="lazy">
+  <figcaption>Refined Suite Offer Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/renault-etech-promocard.jpg" alt="Renault Etech Promocard" loading="lazy">
+  <figcaption>Renault Etech Promocard</figcaption>
+</figure><figure class="item">
+  <img src="assets/shopify-storefront-product-card.jpg" alt="Shopify Storefront Product Card" loading="lazy">
+  <figcaption>Shopify Storefront Product Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/uber-ride-quote-card.jpg" alt="Uber Ride Quote Card" loading="lazy">
+  <figcaption>Uber Ride Quote Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/arc-sidebar-tabs.jpg" alt="Arc Sidebar Tabs" loading="lazy">
+  <figcaption>Arc Sidebar Tabs</figcaption>
+</figure><figure class="item">
+  <img src="assets/starbucks-rewards-status-card.jpg" alt="Starbucks Rewards Status Card" loading="lazy">
+  <figcaption>Starbucks Rewards Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/artistic-showcase-card.jpg" alt="Artistic Showcase Card" loading="lazy">
+  <figcaption>Artistic Showcase Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/bmw-m-spec-grid.jpg" alt="Bmw M Spec Grid" loading="lazy">
+  <figcaption>Bmw M Spec Grid</figcaption>
+</figure><figure class="item">
+  <img src="assets/cafe-menu-card.jpg" alt="Cafe Menu Card" loading="lazy">
+  <figcaption>Cafe Menu Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/clay-playful-card.jpg" alt="Clay Playful Card" loading="lazy">
+  <figcaption>Clay Playful Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/corporate-executive-card.jpg" alt="Corporate Executive Card" loading="lazy">
+  <figcaption>Corporate Executive Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/doodle-sketch-note-card.jpg" alt="Doodle Sketch Note Card" loading="lazy">
+  <figcaption>Doodle Sketch Note Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/fantasy-quest-card.jpg" alt="Fantasy Quest Card" loading="lazy">
+  <figcaption>Fantasy Quest Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/ferrari-subscribe-section.jpg" alt="Ferrari Subscribe Section" loading="lazy">
+  <figcaption>Ferrari Subscribe Section</figcaption>
+</figure><figure class="item">
+  <img src="assets/figma-gradient-hero-card.jpg" alt="Figma Gradient Hero Card" loading="lazy">
+  <figcaption>Figma Gradient Hero Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/framer-design-canvas-card.jpg" alt="Framer Design Canvas Card" loading="lazy">
+  <figcaption>Framer Design Canvas Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/kraken-portfolio-card.jpg" alt="Kraken Portfolio Card" loading="lazy">
+  <figcaption>Kraken Portfolio Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/levels-metabolic-card.jpg" alt="Levels Metabolic Card" loading="lazy">
+  <figcaption>Levels Metabolic Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/lingo-lesson-complete-card.jpg" alt="Lingo Lesson Complete Card" loading="lazy">
+  <figcaption>Lingo Lesson Complete Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/material-stay-reservation-card.jpg" alt="Material Stay Reservation Card" loading="lazy">
+  <figcaption>Material Stay Reservation Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/miro-board-card.jpg" alt="Miro Board Card" loading="lazy">
+  <figcaption>Miro Board Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/neon-night-event-card.jpg" alt="Neon Night Event Card" loading="lazy">
+  <figcaption>Neon Night Event Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/neumorphism-control-card.jpg" alt="Neumorphism Control Card" loading="lazy">
+  <figcaption>Neumorphism Control Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/notion-page-card.jpg" alt="Notion Page Card" loading="lazy">
+  <figcaption>Notion Page Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/ollama-run-card.jpg" alt="Ollama Run Card" loading="lazy">
+  <figcaption>Ollama Run Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/pacman-highscore-card.jpg" alt="Pacman Highscore Card" loading="lazy">
+  <figcaption>Pacman Highscore Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/paper-field-note-card.jpg" alt="Paper Field Note Card" loading="lazy">
+  <figcaption>Paper Field Note Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/tesla-model-showcase-hero.jpg" alt="Tesla Model Showcase Hero" loading="lazy">
+  <figcaption>Tesla Model Showcase Hero</figcaption>
+</figure><figure class="item">
+  <img src="assets/atelier-zero-roman-section.jpg" alt="Atelier Zero Roman Section" loading="lazy">
+  <figcaption>Atelier Zero Roman Section</figcaption>
+</figure><figure class="item">
+  <img src="assets/canva-template-picker.jpg" alt="Canva Template Picker" loading="lazy">
+  <figcaption>Canva Template Picker</figcaption>
+</figure><figure class="item">
+  <img src="assets/duolingo-lesson-path.jpg" alt="Duolingo Lesson Path" loading="lazy">
+  <figcaption>Duolingo Lesson Path</figcaption>
+</figure><figure class="item">
+  <img src="assets/github-pr-list-panel.jpg" alt="Github Pr List Panel" loading="lazy">
+  <figcaption>Github Pr List Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/linear-issue-tracker.jpg" alt="Linear Issue Tracker" loading="lazy">
+  <figcaption>Linear Issue Tracker</figcaption>
+</figure><figure class="item">
+  <img src="assets/professional-service-overview-panel.jpg" alt="Professional Service Overview Panel" loading="lazy">
+  <figcaption>Professional Service Overview Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/binance-portfolio-card.jpg" alt="Binance Portfolio Card" loading="lazy">
+  <figcaption>Binance Portfolio Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/coinbase-portfolio-card.jpg" alt="Coinbase Portfolio Card" loading="lazy">
+  <figcaption>Coinbase Portfolio Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/revolut-travel-spend-card.jpg" alt="Revolut Travel Spend Card" loading="lazy">
+  <figcaption>Revolut Travel Spend Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/stripe-checkout-summary.jpg" alt="Stripe Checkout Summary" loading="lazy">
+  <figcaption>Stripe Checkout Summary</figcaption>
+</figure><figure class="item">
+  <img src="assets/trading-terminal-watchlist-panel.jpg" alt="Trading Terminal Watchlist Panel" loading="lazy">
+  <figcaption>Trading Terminal Watchlist Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/wise-transfer-quote-card.jpg" alt="Wise Transfer Quote Card" loading="lazy">
+  <figcaption>Wise Transfer Quote Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/brutalism-newsletter-cta.jpg" alt="Brutalism Newsletter Cta" loading="lazy">
+  <figcaption>Brutalism Newsletter Cta</figcaption>
+</figure><figure class="item">
+  <img src="assets/colorful-newsletter-card.jpg" alt="Colorful Newsletter Card" loading="lazy">
+  <figcaption>Colorful Newsletter Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/editorial-story-feature-card.jpg" alt="Editorial Story Feature Card" loading="lazy">
+  <figcaption>Editorial Story Feature Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/storytelling-chapter-card.jpg" alt="Storytelling Chapter Card" loading="lazy">
+  <figcaption>Storytelling Chapter Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/wired-most-popular-list.jpg" alt="Wired Most Popular List" loading="lazy">
+  <figcaption>Wired Most Popular List</figcaption>
+</figure><figure class="item">
+  <img src="assets/bugatti-cinema-hero.jpg" alt="Bugatti Cinema Hero" loading="lazy">
+  <figcaption>Bugatti Cinema Hero</figcaption>
+</figure><figure class="item">
+  <img src="assets/dramatic-cinema-hero.jpg" alt="Dramatic Cinema Hero" loading="lazy">
+  <figcaption>Dramatic Cinema Hero</figcaption>
+</figure><figure class="item">
+  <img src="assets/energetic-launch-cta-card.jpg" alt="Energetic Launch Cta Card" loading="lazy">
+  <figcaption>Energetic Launch Cta Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/loom-video-card.jpg" alt="Loom Video Card" loading="lazy">
+  <figcaption>Loom Video Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/playstation-game-launch-card.jpg" alt="Playstation Game Launch Card" loading="lazy">
+  <figcaption>Playstation Game Launch Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/spacex-mission-hero.jpg" alt="Spacex Mission Hero" loading="lazy">
+  <figcaption>Spacex Mission Hero</figcaption>
+</figure><figure class="item">
+  <img src="assets/spotify-now-playing-card.jpg" alt="Spotify Now Playing Card" loading="lazy">
+  <figcaption>Spotify Now Playing Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/totality-festival-event-card.jpg" alt="Totality Festival Event Card" loading="lazy">
+  <figcaption>Totality Festival Event Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/cal-booking-card.jpg" alt="Cal Booking Card" loading="lazy">
+  <figcaption>Cal Booking Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/elegant-travel-advisory-card.jpg" alt="Elegant Travel Advisory Card" loading="lazy">
+  <figcaption>Elegant Travel Advisory Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/friendly-travel-intake-card.jpg" alt="Friendly Travel Intake Card" loading="lazy">
+  <figcaption>Friendly Travel Intake Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/kami-travel-dossier.jpg" alt="Kami Travel Dossier" loading="lazy">
+  <figcaption>Kami Travel Dossier</figcaption>
+</figure><figure class="item">
+  <img src="assets/minimal-itinerary-card.jpg" alt="Minimal Itinerary Card" loading="lazy">
+  <figcaption>Minimal Itinerary Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/neobrutalism-destination-card.jpg" alt="Neobrutalism Destination Card" loading="lazy">
+  <figcaption>Neobrutalism Destination Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/perspective-layered-travel-card.jpg" alt="Perspective Layered Travel Card" loading="lazy">
+  <figcaption>Perspective Layered Travel Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/premium-travel-offer-card.jpg" alt="Premium Travel Offer Card" loading="lazy">
+  <figcaption>Premium Travel Offer Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/publication-travel-dispatch.jpg" alt="Publication Travel Dispatch" loading="lazy">
+  <figcaption>Publication Travel Dispatch</figcaption>
+</figure><figure class="item">
+  <img src="assets/raycast-command-palette-dossier.jpg" alt="Raycast Command Palette Dossier" loading="lazy">
+  <figcaption>Raycast Command Palette Dossier</figcaption>
+</figure><figure class="item">
+  <img src="assets/retro-travel-stamp-card.jpg" alt="Retro Travel Stamp Card" loading="lazy">
+  <figcaption>Retro Travel Stamp Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/simple-trip-status-card.jpg" alt="Simple Trip Status Card" loading="lazy">
+  <figcaption>Simple Trip Status Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/skeuomorphic-travel-diary-card.jpg" alt="Skeuomorphic Travel Diary Card" loading="lazy">
+  <figcaption>Skeuomorphic Travel Diary Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/spacious-travel-overview.jpg" alt="Spacious Travel Overview" loading="lazy">
+  <figcaption>Spacious Travel Overview</figcaption>
+</figure><figure class="item">
+  <img src="assets/theverge-travel-storystream.jpg" alt="Theverge Travel Storystream" loading="lazy">
+  <figcaption>Theverge Travel Storystream</figcaption>
+</figure><figure class="item">
+  <img src="assets/urdu-editorial-travel-card.jpg" alt="Urdu Editorial Travel Card" loading="lazy">
+  <figcaption>Urdu Editorial Travel Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/vintage-travel-offer-card.jpg" alt="Vintage Travel Offer Card" loading="lazy">
+  <figcaption>Vintage Travel Offer Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/warm-editorial-travel-essay-card.jpg" alt="Warm Editorial Travel Essay Card" loading="lazy">
+  <figcaption>Warm Editorial Travel Essay Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/claymorphism-profile-card.jpg" alt="Claymorphism Profile Card" loading="lazy">
+  <figcaption>Claymorphism Profile Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/discord-chat-thread.jpg" alt="Discord Chat Thread" loading="lazy">
+  <figcaption>Discord Chat Thread</figcaption>
+</figure><figure class="item">
+  <img src="assets/pinterest-pin-board.jpg" alt="Pinterest Pin Board" loading="lazy">
+  <figcaption>Pinterest Pin Board</figcaption>
+</figure><figure class="item">
+  <img src="assets/slack-thread-message-card.jpg" alt="Slack Thread Message Card" loading="lazy">
+  <figcaption>Slack Thread Message Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/wechat-chat-thread.jpg" alt="Wechat Chat Thread" loading="lazy">
+  <figcaption>Wechat Chat Thread</figcaption>
+</figure><figure class="item">
+  <img src="assets/cosmic-mission-terminal.jpg" alt="Cosmic Mission Terminal" loading="lazy">
+  <figcaption>Cosmic Mission Terminal</figcaption>
+</figure><figure class="item">
+  <img src="assets/dithered-retro-panel.jpg" alt="Dithered Retro Panel" loading="lazy">
+  <figcaption>Dithered Retro Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/glassmorphism-metric-panel.jpg" alt="Glassmorphism Metric Panel" loading="lazy">
+  <figcaption>Glassmorphism Metric Panel</figcaption>
+</figure><figure class="item">
+  <img src="assets/gradient-spotlight-cta.jpg" alt="Gradient Spotlight Cta" loading="lazy">
+  <figcaption>Gradient Spotlight Cta</figcaption>
+</figure><figure class="item">
+  <img src="assets/tetris-level-progress-card.jpg" alt="Tetris Level Progress Card" loading="lazy">
+  <figcaption>Tetris Level Progress Card</figcaption>
+</figure><figure class="item">
+  <img src="assets/vibrant-launch-card.jpg" alt="Vibrant Launch Card" loading="lazy">
+  <figcaption>Vibrant Launch Card</figcaption>
+</figure>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    UI Component Store · Buy on <a href="#gumroad">Gumroad</a> · Commercial license · Unlimited projects
+  </div>
+</footer>
+</body>
+</html>
